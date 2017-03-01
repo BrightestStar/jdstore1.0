@@ -25,8 +25,8 @@
                 <tr>
                     <td>
                         <%= link_to product_path(cart_item.product) do %>
-                        <% if cart_item.product.image.present? %>
-                        <%= image_tag(cart_item.product.image.thumb.url, class: "thumbnail") %>
+                        <% if cart_item.product.photos[0].present? %>
+                        <%= image_tag(cart_item.product.photos[0].avatar.thumb.url, class: "thumbnail") %>
                     <% else %>
                         <%= image_tag("https://ww4.sinaimg.cn/large/006y8lValy1fcgy0yxl0vj305l05lmwx.jpg", class: "thumbnail") %>
                         <% end %>

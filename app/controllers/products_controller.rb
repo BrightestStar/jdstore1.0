@@ -7,6 +7,7 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
+    @photos = @product.photos.all
     @comments = @product.comments.recent.paginate(:page => params[:page], :per_page => 5)
   end
 
