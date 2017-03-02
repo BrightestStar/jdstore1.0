@@ -6,6 +6,27 @@ class Admin::OrdersController < ApplicationController
 
   def index
     @orders = Order.order("id DESC")
+
+    if params[:total].present?
+      @orders = @orders.where( "total > ?", params[:total] )
+    end
+
+    if params[:ids].present?
+      @orders = @orders.where( :id => params[:ids].split(",") )
+    end
+
+    if params[:status] == "pending"
+      @orders = @orders.where( :aasm_state => ["order_placed", "paid"] )
+    elsif params[:status] == "done"
+      @orders = @orders.where.not( :aasm_state => ["order_placed", "paid"] )
+    end
+
+    if params[:date].present?
+      d = Date.parse( params[:date] )
+      @orders = @orders.where( :created_at => d.beginning_of_day..d.end_of_day )
+    end
+
+    @orders = @orders.paginate(:page => params[:page])
   end
 
   def show

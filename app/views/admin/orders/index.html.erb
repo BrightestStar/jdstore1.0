@@ -1,6 +1,27 @@
 <h2>订单列表
 </h2>
 
+<%= form_tag admin_orders_path, :method => :get do %>
+
+  <%= label_tag :total %>
+  <%= text_field_tag :total %>
+
+  <%= label_tag :ids %>
+  <%= text_field_tag :ids %>
+
+  <%= date_field_tag :date %>
+  <%= submit_tag "Submit" %>
+
+<% end %>
+
+<br>
+
+<p>
+  <%= link_to "全部订单", admin_orders_path %>
+  <%= link_to "正在进行的订单", admin_orders_path( :status => "pending") %>
+  <%= link_to "已付款订单", admin_orders_path( :status => "done") %>
+</p>
+
 <table class="table table-bordered">
     <thead>
         <tr>
