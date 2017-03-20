@@ -17,6 +17,7 @@
 
 
 //= require bootstrap
+//= require select2
 //= require_tree .
 
 

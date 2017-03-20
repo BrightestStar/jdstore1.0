@@ -9,6 +9,10 @@
 </div>
 
 <div class="group">
+    <%= f.association :category %>
+</div>
+
+<div class="group">
     <%= f.input :description %>
 </div>
 
@@ -39,3 +43,7 @@
 <%= f.submit "Submit", data: { disable_with: "Submitting..." } %>
 
 <% end %>
+
+<script>
+  $("#product_category_id").select2();
+</script>

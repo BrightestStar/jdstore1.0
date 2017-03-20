@@ -46,6 +46,7 @@ gem 'will_paginate-bootstrap'
 gem 'seo_helper'
 gem 'acts_as_votable'
 gem 'rails-erd'
+gem "select2-rails"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
